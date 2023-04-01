@@ -120,14 +120,17 @@ module Magick
       #   A resized image.
       #
       def fit_to_size(max_width, max_height)
-        resize_to_fit(max_width, max_height) if oversize?(max_width, max_height)
+        oversize?(max_width, max_height) ? resize_to_fit(max_width, max_height) : copy
       end
 
       #
       # A bang version of the 'BinMagick::Image#fit_to_size'.
       #
-      def fit_to_size!(max_width, max_height)
-        resize_to_fit!(max_width, max_height) if oversize?(max_width, max_height)
+      def fit_to_size!(...)
+        new_img = fit_to_size(...)
+        _replace_pixels(new_img)
+
+        self
       end
 
       #
