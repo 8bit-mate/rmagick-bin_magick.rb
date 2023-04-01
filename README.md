@@ -34,7 +34,7 @@ Or install it yourself as:
 1. Add **rmagick-bin_magick** to the list of required modules:
 
   ```ruby
-  require "rmagick-bin_magick"
+  require "rmagick/bin_magick"
   ```
 
 2. Read an image from a file:
@@ -58,7 +58,7 @@ Or install it yourself as:
 This example shows how different *Magick::BinMagick::Image* and *Magick::Image* instance methods may be combined in one method call chain:
 
 ```ruby
-require "rmagick-bin_magick"
+require "rmagick/bin_magick"
 
 # Read an image from a file:
 begin
@@ -87,7 +87,7 @@ The code above will produce the following result:
 You can also use in-place methods:
 
 ```ruby
-require "rmagick-bin_magick"
+require "rmagick/bin_magick"
 
 # Read an image from the file './data/test_1.png'
 # ...
