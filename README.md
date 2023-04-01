@@ -71,7 +71,7 @@ rescue Magick::BinMagick::BinMagickError => e
 end
 
 image
-  .level(1, Magick::QuantumRange * 0.95, 0.4) # Adjust levels (a RMagick method).
+  .level(0, Magick::QuantumRange * 0.95, 0.4) # Adjust levels (a RMagick method).
   .crop_border_clr # Crop white border (a BinMagick method).
   .fit_to_size!(192, 192) # Resize to fit a 192 x 192 square (a BinMagick method).
   .to_binary(64, Magick::NoDitherMethod, "o2x2") # Convert to binary (a BinMagick method).
@@ -95,7 +95,7 @@ require "rmagick/bin_magick"
 # ...
 
 # Adjust levels (a BinMagick method):
-image.level!(1, Magick::QuantumRange, 0.5)
+image.level!(0, Magick::QuantumRange, 0.5)
 
 # Crop white border (a BinMagick method):
 image.crop_border_clr!

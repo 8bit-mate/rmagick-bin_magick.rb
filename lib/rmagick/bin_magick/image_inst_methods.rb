@@ -89,6 +89,8 @@ module Magick
         pixels = @image.dispatch(0, 0, columns, rows, "RGB")
         img = Magick::Image.constitute(columns, rows, "RGB", pixels)
         img.display
+
+        self
       end
 
       #
