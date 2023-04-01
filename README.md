@@ -1,5 +1,7 @@
 # rmagick/bin_magick
 
+[![Gem Version](https://badge.fury.io/rb/rmagick-bin_magick.svg)](https://badge.fury.io/rb/rmagick-bin_magick)
+
 ## Description
 
 **rmagick/bin_magick** is an extension of the popular **[rmagick](https://github.com/rmagick/rmagick)** image processing gem. The extension provides custom methods for easy conversion of color images to binary (monochrome) format. It also introduces in-place versions of some existing *Magick::Image* methods that, by default, lack an in-place version
