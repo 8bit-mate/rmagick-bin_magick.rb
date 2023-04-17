@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rmagick-bin_magick (0.1.0)
+    rmagick-bin_magick (0.1.2)
       rmagick (~> 5.2, >= 5.2.0)
 
 GEM

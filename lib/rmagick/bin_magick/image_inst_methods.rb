@@ -9,14 +9,24 @@ module Magick
     #
     class Image < MagickWrapper
       #
+      # Check if the image is binary.
+      #
+      # @return [Boolean]
+      #
+      def binary?
+        accepted_colors = %w[black white]
+        colors = quantize.color_histogram.transform_keys(&:to_color)
+
+        (colors.keys - accepted_colors).empty?
+      end
+
+      #
       # Check if the image has at least one black pixel.
       #
       # @return [Boolean]
       #
       def black_px?
-        colors = color_histogram
-        colors = colors.transform_keys(&:to_color)
-
+        colors = color_histogram.transform_keys(&:to_color)
         colors.key?("black")
       end
 
