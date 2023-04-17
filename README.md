@@ -205,7 +205,7 @@ The code above will produce the following result:
 
   *img*.crop_border -> *image*
 
-  Crop border around the image. If the image is blank (has all pixels of white color): returns an unedited copy of the target image.
+  Crop border around the image. If the image can't be cropped (e.g. it has only pixels of the same color): returns an unedited copy of the target image.
 
   Methods calculates a bounding box value for the target image (see Magick::Image#[bounding_box](https://rmagick.github.io/image1.html#bounding_box)), and uses that value to crop a copy of the target image.
 
@@ -231,7 +231,7 @@ The code above will produce the following result:
 
   Same as *crop_border*, but treats a color image like it is already a binary one. The bounding box value is being calculated for a binary version of the target image, then a copy of the target image is being cropped used that value.
 
-  Method **does not** convert the target image to a binary, but uses a binary version only to calculate the bounding box value. For that purpose it accepts and utilizes all *to_binary* arguments.
+  The method **does not** convert the target image to a binary, but uses a binary version only to calculate the bounding box value. For that purpose it accepts and utilizes all *to_binary* arguments.
 
   **Arguments**: see *to_binary* arguments description.
 

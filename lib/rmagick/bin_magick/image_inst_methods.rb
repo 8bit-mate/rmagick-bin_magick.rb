@@ -9,7 +9,7 @@ module Magick
     #
     class Image < MagickWrapper
       #
-      # Check if the image is binary.
+      # Check if the image is a binary image.
       #
       # @return [Boolean]
       #
@@ -31,22 +31,13 @@ module Magick
       end
 
       #
-      # Crop border around the image. If the image is blank: return an unedited copy of the target image.
+      # Crop border around the image or return an unedited copy if the image can't be cropped.
       #
       # @return [BinMagick::Image]
       #   A cropped image.
       #
       def crop_border
-        return copy unless black_px?
-
-        bb = bounding_box
-
-        crop(
-          bb.x,
-          bb.y,
-          bb.width,
-          bb.height
-        )
+        _crop_border(self)
       end
 
       #
@@ -69,17 +60,7 @@ module Magick
       #
       def crop_border_clr(...)
         bin_img = to_binary(...)
-
-        return copy unless bin_img.black_px?
-
-        bb = bin_img.bounding_box
-
-        crop(
-          bb.x,
-          bb.y,
-          bb.width,
-          bb.height
-        )
+        _crop_border(bin_img)
       end
 
       #
@@ -224,6 +205,19 @@ module Magick
       end
 
       private
+
+      #
+      # Crop border around the image *img* or return an unedited copy of the image if the image can't be cropped.
+      #
+      # @param [Magick::BinMagick::Image] img
+      #   Image to crop.
+      #
+      def _crop_border(img)
+        bb = img.bounding_box
+        crop(bb.x, bb.y, bb.width, bb.height)
+      rescue RuntimeError
+        img.copy
+      end
 
       #
       # Replace pixels in the target image with pixels from the image 'img' that is a result of a BinMagick::Image or
