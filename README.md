@@ -181,6 +181,16 @@ The code above will produce the following result:
 
 ### Class Magick::BinMagick::Image: instance methods
 
+- **binary?**
+
+  *img*.binary? -> *boolean*
+
+  Checks if the image consists of pixels that can have one of exactly two colors: black or white.
+
+  **Returns**: a boolean value.
+
+***
+
 - **black_px?**
 
   *img*.black_px? -> *boolean*
